@@ -1,0 +1,9 @@
+inicio
+    declare horas, min, seg inteiro
+    leia seg
+    horas = seg / (60 * 60)
+    seg = seg - (horas * (60 * 60))
+    min = seg / 60
+    seg = seg - (min * 60)
+    escreva %d:%d:%d , horas, min, seg
+fim

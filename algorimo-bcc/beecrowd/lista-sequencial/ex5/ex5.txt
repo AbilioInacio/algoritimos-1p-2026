@@ -1,0 +1,8 @@
+Inicio
+    declare distancia inteiro
+    declare consumo, media float
+    leia distancia
+    leia consumo
+    medio = distancio / consumo
+    escreva %.3f km/l
+Fim

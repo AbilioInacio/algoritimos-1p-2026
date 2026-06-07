@@ -1,0 +1,9 @@
+inicio
+    declare a, b, c, d inteiro
+    leia a, b, c, d
+    se ((b>c) e (d>a) e (c+d>a+b) e ((c > 0) e (d > 0)) e (a%2 == 0)) entao
+        escreva Valores aceitos
+    senao
+        escreva Valores nao aceitos
+    fim se
+fim

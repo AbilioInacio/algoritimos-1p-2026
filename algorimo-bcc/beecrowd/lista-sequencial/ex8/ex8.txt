@@ -1,0 +1,8 @@
+inicio
+    declare tempo, velocidade, distancia inteiro
+    declare consumo float
+    leia tempo, velocidade
+    distancia = velocidade * tempo
+    consumo = distancia / 12
+    escreva %.3f, consumo
+fim

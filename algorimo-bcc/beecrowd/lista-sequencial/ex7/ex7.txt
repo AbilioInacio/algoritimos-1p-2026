@@ -1,0 +1,8 @@
+inicio
+    contante VELX = 60, VELY = 90 inteiro;
+    declare distancia, tempo inteiro
+    leia distancia
+    tempo = (VELY - VELX) /60
+    tempo = distancia / tempo
+    escreva %d minutos
+fim

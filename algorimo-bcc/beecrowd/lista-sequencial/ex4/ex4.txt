@@ -1,0 +1,6 @@
+inicio
+    declare num1, num2, num3, maior inteiros
+    leia num1 num2 num3
+    maior = (a+b+abs(a-b))/2
+    escreva %d eh o maior
+fim

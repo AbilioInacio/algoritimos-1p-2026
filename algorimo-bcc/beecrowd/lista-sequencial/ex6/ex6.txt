@@ -1,0 +1,8 @@
+inicio
+    declare x1, x2, y1, y2, distancia double
+    leia x1, y1
+    leia x2, y2
+    distancia = pow((x2 - x1), 2) + pow((y2 - y1), 2)
+    distancia = sqrt(distancia)
+    escreva %.4lf
+fim

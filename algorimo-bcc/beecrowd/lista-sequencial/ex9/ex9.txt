@@ -1,0 +1,26 @@
+100, 50, 20, 10, 5, 2, 1
+inicio
+    declarar valor, qtNotas inteiro
+    leia valor
+    escreva valor
+    qtNotas = valor / 100
+    escreva %d nota(s) de R$ 100,00 , qtNotas
+    valor = valor - (qtNotas * 100)
+    qtNotas = valor / 50
+    escreva %d nota(s) de R$ 50,00 , qtNotas
+    valor = valor - (qtNotas * 50)
+    qtNotas = valor / 20
+    escreva %d nota(s) de R$ 20,00 , qtNotas
+    valor = valor - (qtNotas * 20)
+    qtNotas = valor / 10
+    escreva %d nota(s) de R$ 10,00 , qtNotas
+    valor = valor - (qtNotas * 10)
+    qtNotas = valor / 5
+    escreva %d nota(s) de R$ 5,00 , qtNotas
+    valor = valor - (qtNotas * 5)
+    qtNotas = valor / 2
+    escreva %d nota(s) de R$ 2,00 , qtNotas
+    valor = valor - (qtNotas * 2)
+    qtNotas = valor / 1
+    escreva %d nota(s) de R$ 1,00 , qtNotas
+fim

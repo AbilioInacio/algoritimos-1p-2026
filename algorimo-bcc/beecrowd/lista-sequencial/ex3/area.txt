@@ -1,0 +1,20 @@
+inicio
+    constante PI = 3.14159
+    declere a, b, c , result double
+    leia a, b, c
+    //area do triangulo retanguo
+    result = (a * c) / 2
+    imprima TRIANGULO: '%.3result'
+    //area do circulo 
+    result = PI * c * c
+    imprima CIRCULO: '%.3result'
+    //area  do trapezio ((B+b)*h)/2
+    result =  ((a + b) * c ) / 2
+    imprima TRAPEZIO: '%.3result'
+    //area quadrado B
+    result = b * b
+    imprima QUADRADO: '%.3result'
+    //area retangulo sendo lados a e B
+    result = a * b
+    imprima RETANGULO: '%.3result'
+fim

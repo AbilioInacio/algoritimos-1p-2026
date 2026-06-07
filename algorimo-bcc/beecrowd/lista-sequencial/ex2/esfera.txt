@@ -1,0 +1,7 @@
+Inicio
+    const doble pi = 3.14159;
+    declare raio, volume double
+    leia raio
+    volume = (4.0/3) * PI * raio * raio * raio //(4/3) * pi * R3
+    imprima VOLUME = "%volume"
+Fim

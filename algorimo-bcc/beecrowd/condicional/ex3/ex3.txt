@@ -1,0 +1,11 @@
+inicio
+    declare num float
+    leia num
+    se (num < 0) ou (num > 100) entao
+        ESCREVA Fora de intervalo
+    entao se (num >= 0 ) && ( num <= 25) entao
+        escreva Intervalo [0,25]
+    senao se
+    
+    fim se
+fim
