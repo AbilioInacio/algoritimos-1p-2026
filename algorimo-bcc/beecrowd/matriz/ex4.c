@@ -9,7 +9,7 @@ int main(){
     for(linha = 0; linha < 12; linha++){
         for(coluna = 0; coluna < 12; coluna++){
             scanf("%f", &matriz[linha][coluna]);
-            if(linha > 11-coluna){
+            if(linha > coluna){
                 resultado += matriz[linha][coluna];
                 aux++;
             }
