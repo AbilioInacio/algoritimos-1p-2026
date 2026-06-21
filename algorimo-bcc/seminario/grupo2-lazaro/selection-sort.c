@@ -20,7 +20,6 @@ void trocar_palavras(char *frase1, char *frase2, int tamanho){
 int ordenar_decrescente(int *cod, char nomes[][TAM_NOME], float * media, char resultado[][TAM_RES]){
     int auxCod, interacoes = 0, ok = 0;
     float auxMedia;
-    char auxNome[TAM_NOME];
     while(!ok){
         ok = 1;
         for(int i = 0; i < QT_ALUNOS-1; i++){
