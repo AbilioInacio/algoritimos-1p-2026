@@ -23,7 +23,7 @@ int ordenar_decrescente(int *cod, char nomes[][TAM_NOME], float * media, char re
     char auxNome[TAM_NOME];
     while(!ok){
         ok = 1;
-        for(int i = 1; i < QT_ALUNOS-1; i++){
+        for(int i = 0; i < QT_ALUNOS-1; i++){
             for(int j = i+1; j < QT_ALUNOS; j++){
                 if(media[i] < media[j]){
                     auxCod = cod[i];
