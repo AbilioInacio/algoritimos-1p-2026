@@ -30,7 +30,7 @@ void ordenar_crescente(int *cod, char nomes[][TAM_NOME], float *media, char resu
         if(pos != i){   //verifica se a posição do menor é diferente da posiçao analizada
             auxCod = cod[i];        //aramazena o valor do codigo da posição na varival auxiliar para liberar o espaço
             cod[i] = cod[pos];      //copia o proximo elemento para a posição ordenada
-            cod[pos] = auxCod;      //armazena o valor da posição que foi substituido e estava na variavel auxiliar 
+            cod[pos] = auxCod;      //armazena o valor da posição que foi substituido e estava na variavel auxiliar
 
             trocar_palavras(nomes[i], nomes[pos], TAM_NOME);            //chama a função e passa a matriz nome com as posições a serem trocadas
             trocar_palavras(resultado[i], resultado[pos], TAM_RES);     //chama a funcao e passa a matriz resultado com as posiçõ a serem trocadas
