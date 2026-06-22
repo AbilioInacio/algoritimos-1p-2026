@@ -1,20 +1,20 @@
-#include <stdio.h>
+#include <stdio.h>      //adiciona a bibioteca de input e output
 
-const int QT_ALUNOS = 1000, TAM_NOME = 100, TAM_RES = 20;
+const int QT_ALUNOS = 1000, TAM_NOME = 100, TAM_RES = 20; // define as constantes globais que todas as dunções podem ler
 
-void copiar_palavras(char *frase1, char *frase2){
+void copiar_palavras(char *frase1, char *frase2){   //recebe os ponteiros frase1 e frase2, para servir para qualquer frase
     int i;
-    for(i = 0; frase2[i] != '\0'; i++){
-        frase1[i] = frase2[i];
+    for(i = 0; frase2[i] != '\0'; i++){     //começa na primiera posição ate encontrar o caractere especial \0 que define fim da frase
+        frase1[i] = frase2[i];      //em todas as posicoes copia o caracter da frase2 para frase1.
     }
-    frase1[i] = '\0';
+    frase1[i] = '\0';       //colocar o caracter indicando o fim da frase, pois o for nao entra no caracter especial
 }
 
-void trocar_palavras(char *frase1, char *frase2, int tamanho){
-    char auxFrase[tamanho];
-    copiar_palavras(auxFrase, frase1);
-    copiar_palavras(frase1, frase2);
-    copiar_palavras(frase2, auxFrase);
+void trocar_palavras(char *frase1, char *frase2, int tamanho){      //recebe como parametro as duas frases a serem invetidas e o tamnho
+    char auxFrase[tamanho];             //cria um vetor auxiliar do tamanho definido
+    copiar_palavras(auxFrase, frase1);  //copia da frase1 para o auxiliar
+    copiar_palavras(frase1, frase2);    //copia os caracteres da frase2 para a frase1
+    copiar_palavras(frase2, auxFrase);  //copia os caracteres do auxiliar para a frase2
 }
 
 void ordenar_decrescente(int *cod, char nomes[][TAM_NOME], float *media, char resultado[][TAM_RES]){
