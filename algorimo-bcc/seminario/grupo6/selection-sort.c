@@ -18,7 +18,7 @@ void trocar_palavras(char *frase1, char *frase2, int tamanho){      //recebe com
 }
 
 void ordenar_crescente(int *cod, char nomes[][TAM_NOME], float *media, char resultado[][TAM_RES]){
-    int auxCod, pos, interacoes = 0, ok = 0;
+    int auxCod, pos;
     float auxMedia;
     for(int i = 0; i < QT_ALUNOS-1; i++){       //define o primeiro ponteiro na primeira posição ate a penultima posição
         pos = i;    //assume que a priera posição é o menor antes de começar a comparar
