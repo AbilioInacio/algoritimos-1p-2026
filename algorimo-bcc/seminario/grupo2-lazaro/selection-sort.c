@@ -17,41 +17,39 @@ void trocar_palavras(char *frase1, char *frase2, int tamanho){
     copiar_palavras(frase2, auxFrase);
 }
 
-int ordenar_decrescente(int *cod, char nomes[][TAM_NOME], float * media, char resultado[][TAM_RES]){
-    int auxCod, interacoes = 0, ok = 0;
+void ordenar_decrescente(int *cod, char nomes[][TAM_NOME], float *media, char resultado[][TAM_RES]){
+    int auxCod, pos, interacoes = 0, ok = 0;
     float auxMedia;
-    while(!ok){
-        ok = 1;
-        for(int i = 0; i < QT_ALUNOS-1; i++){
-            for(int j = i+1; j < QT_ALUNOS; j++){
-                if(media[i] < media[j]){
-                    auxCod = cod[i];
-                    cod[i] = cod[j];
-                    cod[j] = auxCod;
-        
-                    trocar_palavras(nomes[i], nomes[j], TAM_NOME);
-                    trocar_palavras(resultado[i], resultado[j], TAM_RES);
-                    
-                    auxMedia = media[i];
-                    media[i] = media[j];
-                    media[j] = auxMedia;            
-                    ok = 0;
-                }
+    for(int i = 0; i < QT_ALUNOS-1; i++){
+        pos = i;
+        for(int j = i+1; j < QT_ALUNOS; j++){
+            if(media[pos] < media[j]){
+                pos = j;
             }
         }
-        interacoes++;
+        if(pos != i){
+            auxCod = cod[i];
+            cod[i] = cod[pos];
+            cod[pos] = auxCod;
+
+            trocar_palavras(nomes[i], nomes[pos], TAM_NOME);
+            trocar_palavras(resultado[i], resultado[pos], TAM_RES);
+            
+            auxMedia = media[i];
+            media[i] = media[pos];
+            media[pos] = auxMedia;
+        }
     }
-    return interacoes;
 }
 
 int main(){
-    int cod[QT_ALUNOS], i,  eficiencia = 0;
+    int cod[QT_ALUNOS], i;
     float nota1, nota2, media[QT_ALUNOS];
     char nomes[QT_ALUNOS][TAM_NOME], resultado[QT_ALUNOS][TAM_RES];
 
-    for(i = 0; i < QT_ALUNOS; i++){
-        scanf("%d,%[^,],%f,%f",&cod[i],nomes[i],&nota1,&nota2);
-        media[i] = (nota1 + nota2)/2;
+    for(i = 0; i < QT_ALUNOS; i++){ //ciclio de repeticao para ler todos os alunos
+        scanf("%d,%[^,],%f,%f",&cod[i],nomes[i],&nota1,&nota2);  //leitura de cada linha lendo primeiro o codigo, depois o nome ate a virgula e as duas notas
+        media[i] = (nota1 + nota2)/2; //calcula media na posicao em que esta sendo lido
         if(media[i] >= 6){
             copiar_palavras(resultado[i], "Aprovado");
         } else {
@@ -59,9 +57,8 @@ int main(){
         }
     }
 
-    eficiencia = ordenar_decrescente(cod, nomes, media, resultado);
+    ordenar_decrescente(cod, nomes, media, resultado);
 
-    printf("Foi necessario %d interacoes\n", eficiencia);
     for(i = QT_ALUNOS-121; i < QT_ALUNOS; i++){
             printf("%5d | %-20s | %5.2f | %s\n", cod[i], nomes[i], media[i], resultado[i]);
     }
