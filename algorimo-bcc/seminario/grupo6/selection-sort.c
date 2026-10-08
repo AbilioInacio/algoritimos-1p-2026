@@ -42,25 +42,39 @@ void ordenar_crescente(int *cod, char nomes[][TAM_NOME], float *media, char resu
     }
 }
 
+void avaliar_alunos(float media, char *resultado){
+    if(media >= 6){      //verifica a media para definir o resultado
+        copiar_palavras(resultado, "Aprovado");  //chama a funcao e para escrever na posicao do vetor a palavra
+    } else {
+        copiar_palavras(resultado, "Reprovado"); //chama a funcao e para escrever na posicao do vetor a palavra
+    }
+}
+
+void ler_alunos(int *cod, char nomes[][TAM_NOME], float *media, char resultado[][TAM_RES]){
+    float nota1, nota2;
+    for(int i = 0; i < QT_ALUNOS; i++){     //ciclio de repeticao para ler todos os alunos
+        scanf("%d,%[^,],%f,%f",&cod[i],nomes[i],&nota1,&nota2);     //leitura de cada linha lendo primeiro o codigo, depois o nome ate a virgula e as duas notas
+        media[i] = (nota1 + nota2)/2;       //calcula media na posicao em que esta sendo lido
+        avaliar_alunos(media[i], resultado[i]);
+    }
+}
+
+void imprimir_piores141(int *cod, char nomes[][TAM_NOME], float *media, char resultado[][TAM_RES]){
+    for(int i = 0; i < 141; i++){     //ciclo de repetição para imprimir os alunos com as 141 piores medias
+            printf("%d,%s,%.2f,%s\n", cod[i], nomes[i], media[i], resultado[i]); //imprime na nar ordem e identea para ficarem alinhados
+    }
+}
+
 int main(){
     int cod[QT_ALUNOS], i;
     float nota1, nota2, media[QT_ALUNOS];
     char nomes[QT_ALUNOS][TAM_NOME], resultado[QT_ALUNOS][TAM_RES];
 
-    for(i = 0; i < QT_ALUNOS; i++){     //ciclio de repeticao para ler todos os alunos
-        scanf("%d,%[^,],%f,%f",&cod[i],nomes[i],&nota1,&nota2);     //leitura de cada linha lendo primeiro o codigo, depois o nome ate a virgula e as duas notas
-        media[i] = (nota1 + nota2)/2;       //calcula media na posicao em que esta sendo lido
-        if(media[i] >= 6){      //verifica a media para definir o resultado
-            copiar_palavras(resultado[i], "Aprovado");  //chama a funcao e para escrever na posicao do vetor a palavra
-        } else {
-            copiar_palavras(resultado[i], "Reprovado"); //chama a funcao e para escrever na posicao do vetor a palavra
-        }
-    }
+    ler_alunos(cod, nomes, media, resultado);   //Chama a função e passa os ponteiros das matrizes e vetores que serão ordenados
 
     ordenar_crescente(cod, nomes, media, resultado); //Chama a função e passa os ponteiros das matrizes e vetores que serão ordenados
 
-    for(i = 0; i < 141; i++){     //ciclo de repetição para imprimir os alunos com as 141 piores medias
-            printf("%5d | %-20s | %5.2f | %s\n", cod[i], nomes[i], media[i], resultado[i]); //imprime na nar ordem e identea para ficarem alinhados
-    }
+    imprimir_piores141(cod, nomes, media, resultado);   //Chama a função e passa os ponteiros das matrizes e vetores que serão ordenados
+    
     return 0;
 }
