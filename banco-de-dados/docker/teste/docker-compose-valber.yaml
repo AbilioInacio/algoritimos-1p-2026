@@ -1,0 +1,43 @@
+version: "3.8"
+
+services:
+  mysql-server:
+    image: mysql:8.0
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: minha_senha_root
+      MYSQL_DATABASE: meu_banco_mysql
+      MYSQL_USER: meu_usuario
+      MYSQL_PASSWORD: minha_senha_segura
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  mysql-workbench:
+    image: lscr.io/linuxserver/mysql-workbench:latest
+    container_name: mysql_workbench_visual
+    restart: always
+    # Permissões extras necessárias para o gnome-keyring gerenciar as credenciais com segurança
+    privileged: true # <-- ADICIONE ESTA LINHA (Dá permissão ao driver gráfico virtual)
+    user: "0:0" # <-- ADICIONE ESTA LINHA (Roda como root interno para evitar travas no chaveiro)
+    cap_add:
+      - IPC_LOCK
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Sao_Paulo
+    ports:
+      - "3000:3000" # Interface HTTP do Workbench no navegador
+      - "3001:3001" # Interface HTTPS do Workbench (Opcional)
+    ipc: host # <-- ADICIONE ESTA LINHA (Compartilha a memória diretamente com o host)
+    shm_size: "2gb" # <-- AUMENTE PARA 2GB (Evita que o renderizador do Selkies quebre)
+    volumes:
+      - workbench_config:/config
+    depends_on:
+      - mysql-server
+
+volumes:
+  mysql_data:
+  workbench_config:
