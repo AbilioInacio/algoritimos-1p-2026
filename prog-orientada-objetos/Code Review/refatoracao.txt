@@ -1,0 +1,31 @@
+1. ENCAPSULAMENTO E SEGURANÇA DE DADOS
+- Ocultação de atributos: Todos os campos públicos das classes Paciente, Medico e Consulta foram alterados para private.
+- Métodos de acesso: Criados getters e setters adequados para todas as propriedades das entidades.
+- Proteção da coleção de consultas: O atributo consultas na classe Agenda teve seu acesso alterado para private final, e o método getConsultas() passou a retornar uma cópia não modificável (Collections.unmodifiableList).
+
+2. REFATORAÇÃO DE NOMES E EXPRESSIVIDADE DOS MÉTODOS
+- Mapeamento e renomeação de métodos da classe Agenda para torná-los mais intuitivos e aderentes ao domínio:
+  * agendar -> agendarConsulta
+  * buscar -> buscarConsulta
+  * cancelar -> cancelarConsulta
+  * remarcar -> remarcarConsulta
+  * listarDoMedico -> listarConsultasPorMedico
+- Atualização correspondente das chamadas destes métodos na classe Main.
+
+3. USO DE ITERATOR PARA PERCURSO DE COLEÇÕES
+- Substituição do laço for-each pelo uso explícito da interface java.util.Iterator nos métodos de busca, verificação e listagem da classe Agenda:
+  * buscarConsultaAgendadaPorPacienteEHorario
+  * existeConflitoMedico
+  * listarConsultasPorMedico
+
+4. REGRA DE NEGÓCIO E VALIDAÇÕES DO DOMÍNIO
+- Validações de entrada: Inclusão de checagens nos construtores/setters de Paciente e Medico para impedir IDs menores/igual a zero e nomes nulos ou vazios.
+- Controle de conflitos de horário: Implementada verificação de duplicidade de horário tanto para Paciente quanto para Médico antes de agendar ou remarcar uma consulta.
+- Garantia de histórico: Removida a funcionalidade removerCanceladas que excluía dados da lista, assegurando a preservação do histórico de consultas canceladas.
+- Efeitos colaterais zerados: Removida a alteração silenciosa de horários inválidos/em branco dentro do método de listagem de consultas.
+
+5. BOAS PRÁTICAS, CLEAN CODE E PRINCÍPIOS SOLID
+- Lógica de busca centralizada: Reutilização do método utilitário privado buscarConsultaAgendadaPorPacienteEHorario para centralizar a busca por paciente e horário ativo.
+- Guard Clauses: Eliminação de estruturas condicionais aninhadas ("código pirâmide") em favor de verificações de guarda no início dos métodos.
+- Sobrescrita de métodos de igualdade: Implementação dos métodos equals() e hashCode() em Paciente e Medico para comparações corretas baseadas no identificador (id).
+- Utilização de Enum: Substituição da String direta de situacao por um tipo enumerado (Consulta.Situacao) para garantir type-safety nos estados AGENDADA, CANCELADA e FINALIZADA.
